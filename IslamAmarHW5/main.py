@@ -74,3 +74,11 @@ def inference():
     ax4.set(xlabel='Days', ylabel=' number of infected  cases')
     ax4.legend(loc='best')
     plt.show()
+
+
+ploting_data_set(dataset)
+covidAnalysis(dataset)
+print(Germanyarr)
+print(Spainarr)
+print(Francearr)
+inference()
