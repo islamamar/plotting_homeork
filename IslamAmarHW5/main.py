@@ -38,3 +38,18 @@ def ploting_data_set(dataset):
         ax.plot(france_x, france_y, label="France")
         ax.plot(spain_x, spain_y, label="Spain")
         ax.legend(loc='best')
+
+def covidAnalysis(dataset):
+    days=["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
+    day_name = pd.to_datetime(dataset['Date']).dt.day_name()
+    for counttry in countries:
+        for day in days:
+            countryDataset = (dataset[dataset["Country"] == counttry])
+            country_day_set = (countryDataset[day_name == day])
+            country_day_set = pd.to_numeric(country_day_set["New Case"] )
+            if counttry == "Germany":
+                Germanyarr.append(country_day_set.sum())
+            elif counttry == "Spain":
+                Spainarr.append(country_day_set.sum())
+            else:
+                Francearr.append(country_day_set.sum())
