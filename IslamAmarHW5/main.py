@@ -53,3 +53,24 @@ def covidAnalysis(dataset):
                 Spainarr.append(country_day_set.sum())
             else:
                 Francearr.append(country_day_set.sum())
+#inference whether the infections tend to increase/decrease over weekends by ploting
+def inference():
+    days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    fig2 = plt.figure(2)
+    fig2.suptitle("Total Number Of Infected New Cases Of Each Day Per 5 Months In Spain , Germany and France ")
+    ax2 = plt.subplot(2, 2, 1)
+    ax3 = plt.subplot(2, 2, 2)
+    ax4 = plt.subplot(2, 2, 3)
+    ax2.plot(days, Germanyarr, "or")  # one axis
+    ax2.plot(days, Germanyarr, label="Germany")  # one axis
+    ax2.legend(loc='best')
+    ax2.set(xlabel='Days', ylabel='number of infected  cases ')
+    ax3.plot(days, Spainarr, "or")  # one axis
+    ax3.plot(days, Spainarr, "green", label="Spain")  # one axis
+    ax3.set(xlabel='Days', ylabel=' number of infected  cases')
+    ax3.legend(loc='best')
+    ax4.plot(days, Francearr, "or")  # one axis
+    ax4.plot(days, Francearr, "orange", label="France")  # one axis
+    ax4.set(xlabel='Days', ylabel=' number of infected  cases')
+    ax4.legend(loc='best')
+    plt.show()
