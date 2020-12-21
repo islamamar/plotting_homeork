@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-dataset = pd.read_csv("D:/book/python/COVID-19_Data_Europe.csv",sep = ',')
+dataset = pd.read_csv("Dataset/COVID-19_Data_Europe.csv",sep = ',')
 newdataset  = dataset[["Date","Country","Total Case"]]
 year = dataset["Date"]
 date = pd.to_datetime(year)
