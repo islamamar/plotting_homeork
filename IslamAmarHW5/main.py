@@ -37,7 +37,7 @@ def ploting_data_set(dataset):
         france_y = pd.to_numeric(Franceset['Total Case'])
 
         fig, ax = plt.subplots()  # one axis
-        ax.set(xlabel='Date', ylabel='Number of Positive Cases', title='COVID-19 total cases  in Germany,United Kingdom and Spain')
+        ax.set(xlabel='Date', ylabel='Number of Positive Cases', title='COVID-19 total cases  in Germany,France and Spain')
         ax.plot(germany_x, germany_y, label="Germany")
         ax.plot(france_x, france_y, label="France")
         ax.plot(spain_x, spain_y, label="Spain")
