@@ -16,6 +16,10 @@ spain_x =[]
 spain_y =  []
 france_x = []
 france_y =  []
+germany_mean_arr = []
+france_mean_arr= []
+spain_mean_arr = []
+days=["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
 countries =["Germany","Spain","France"]
 # Ploting the number of infections over several months in 3-4 European countries
 def ploting_data_set(dataset):
@@ -40,7 +44,7 @@ def ploting_data_set(dataset):
         ax.legend(loc='best')
 
 def covidAnalysis(dataset):
-    days=["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
+
     day_name = pd.to_datetime(dataset['Date']).dt.day_name()
     for counttry in countries:
         for day in days:
@@ -49,10 +53,13 @@ def covidAnalysis(dataset):
             country_day_set = pd.to_numeric(country_day_set["New Case"] )
             if counttry == "Germany":
                 Germanyarr.append(country_day_set.sum())
+                germany_mean_arr.append(country_day_set.mean())
             elif counttry == "Spain":
                 Spainarr.append(country_day_set.sum())
+                spain_mean_arr.append(country_day_set.mean())
             else:
                 Francearr.append(country_day_set.sum())
+                france_mean_arr.append(country_day_set.mean())
 #inference whether the infections tend to increase/decrease over weekends by ploting
 def inference():
     days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
@@ -74,11 +81,43 @@ def inference():
     ax4.set(xlabel='Days', ylabel=' number of infected  cases')
     ax4.legend(loc='best')
     plt.show()
+#inference whether the infections tend to increase/decrease over weekends by calculating mean of new cases for each day in 4 months
+def display():
+    print("***********************************************************")
+    print(" the total mean of new cases in 5 months  in germany for each day ")
+    for i, j in zip(days, germany_mean_arr):
+        print(i + " : " + str(j))
+    print(
+        " by consideritng the weekend just for saturday and sunday , the study has shown that the mean number of new cases in germany in weekend less than the mean \n in other days so number of infection decreased at weekend in germany  with 1% error  ")
+    print("***********************************************************")
+
+    print("----------------------------------------------")
+    print("***********************************************************")
+    print(" the total mean of new cases in 5 months  in france for each day ")
+    for i, j in zip(days, france_mean_arr):
+        print(i + " : " + str(j))
+    print(
+        " by consideritng the weekend just for saturday and sunday , the study has shown that the mean number of new cases in france in weekend less than the mean \n in other days so number of infection decreased at weekend in france  with 1% error   ")
+    print("***********************************************************")
+    print("----------------------------------------------")
+    print("***********************************************************")
+    print(" the total mean of new cases in 5 months  in spain for each day ")
+    for i, j in zip(days, spain_mean_arr):
+        print(i + " : " + str(j))
+    print(
+        " by consideritng the weekend just for saturday and sunday , the study has shown that the mean number of new cases in spain in weekend less than the mean \n in other days so number of infection decreased at weekend in spain  with 1% error  ")
+    print("***********************************************************")
 
 
 ploting_data_set(dataset)
 covidAnalysis(dataset)
-print(Germanyarr)
-print(Spainarr)
-print(Francearr)
+display()
 inference()
+# print(germany_mean_arr)
+# print(france_mean_arr)
+# print(spain_mean_arr)
+# print(Germanyarr)
+# print(Spainarr)
+# print(Francearr)
+
+
